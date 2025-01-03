@@ -1,4 +1,4 @@
-﻿using Volo.Abp.PermissionManagement;
+using Volo.Abp.PermissionManagement;
 using Volo.Abp.SettingManagement;
 using Volo.Abp.Account;
 using Volo.Abp.Identity;
@@ -6,6 +6,7 @@ using Volo.Abp.AutoMapper;
 using Volo.Abp.FeatureManagement;
 using Volo.Abp.Modularity;
 using Volo.Abp.TenantManagement;
+using CommonModule;
 
 namespace AbpSolution2;
 
@@ -19,7 +20,8 @@ namespace AbpSolution2;
     typeof(AbpTenantManagementApplicationModule),
     typeof(AbpSettingManagementApplicationModule)
     )]
-public class AbpSolution2ApplicationModule : AbpModule
+[DependsOn(typeof(CommonModuleApplicationModule))]
+    public class AbpSolution2ApplicationModule : AbpModule
 {
     public override void ConfigureServices(ServiceConfigurationContext context)
     {

@@ -15,6 +15,7 @@ using Volo.Abp.SettingManagement.EntityFrameworkCore;
 using Volo.Abp.OpenIddict.EntityFrameworkCore;
 using Volo.Abp.TenantManagement;
 using Volo.Abp.TenantManagement.EntityFrameworkCore;
+using CommonModule.EntityFrameworkCore;
 
 namespace AbpSolution2.EntityFrameworkCore;
 
@@ -97,5 +98,6 @@ public class AbpSolution2DbContext :
         //    b.ConfigureByConvention(); //auto configure for the base class props
         //    //...
         //});
-    }
+        builder.ConfigureCommonModule();
+        }
 }

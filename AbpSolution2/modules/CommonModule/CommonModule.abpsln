@@ -1,0 +1,7 @@
+{
+  "modules": {
+    "CommonModule": {
+      "path": "CommonModule.abpmdl"
+    }
+  }
+}

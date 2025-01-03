@@ -17,6 +17,7 @@ using Volo.Abp.Emailing;
 using Volo.Abp.FeatureManagement;
 using Volo.Abp.Identity;
 using Volo.Abp.TenantManagement;
+using CommonModule;
 
 namespace AbpSolution2;
 
@@ -35,7 +36,8 @@ namespace AbpSolution2;
     typeof(AbpTenantManagementDomainModule),
     typeof(BlobStoringDatabaseDomainModule)
     )]
-public class AbpSolution2DomainModule : AbpModule
+[DependsOn(typeof(CommonModuleDomainModule))]
+    public class AbpSolution2DomainModule : AbpModule
 {
     public override void ConfigureServices(ServiceConfigurationContext context)
     {

@@ -13,6 +13,7 @@ using Volo.Abp.PermissionManagement.EntityFrameworkCore;
 using Volo.Abp.SettingManagement.EntityFrameworkCore;
 using Volo.Abp.BlobStoring.Database.EntityFrameworkCore;
 using Volo.Abp.TenantManagement.EntityFrameworkCore;
+using CommonModule.EntityFrameworkCore;
 
 namespace AbpSolution2.EntityFrameworkCore;
 
@@ -29,7 +30,8 @@ namespace AbpSolution2.EntityFrameworkCore;
     typeof(AbpTenantManagementEntityFrameworkCoreModule),
     typeof(BlobStoringDatabaseEntityFrameworkCoreModule)
     )]
-public class AbpSolution2EntityFrameworkCoreModule : AbpModule
+[DependsOn(typeof(CommonModuleEntityFrameworkCoreModule))]
+    public class AbpSolution2EntityFrameworkCoreModule : AbpModule
 {
     public override void PreConfigureServices(ServiceConfigurationContext context)
     {

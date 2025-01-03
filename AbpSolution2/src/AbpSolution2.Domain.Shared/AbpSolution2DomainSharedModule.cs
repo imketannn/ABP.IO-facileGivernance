@@ -13,6 +13,7 @@ using Volo.Abp.VirtualFileSystem;
 using Volo.Abp.OpenIddict;
 using Volo.Abp.BlobStoring.Database;
 using Volo.Abp.TenantManagement;
+using CommonModule;
 
 namespace AbpSolution2;
 
@@ -27,7 +28,8 @@ namespace AbpSolution2;
     typeof(AbpTenantManagementDomainSharedModule),
     typeof(BlobStoringDatabaseDomainSharedModule)
     )]
-public class AbpSolution2DomainSharedModule : AbpModule
+[DependsOn(typeof(CommonModuleDomainSharedModule))]
+    public class AbpSolution2DomainSharedModule : AbpModule
 {
     public override void PreConfigureServices(ServiceConfigurationContext context)
     {

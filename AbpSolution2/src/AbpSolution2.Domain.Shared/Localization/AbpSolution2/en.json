@@ -34,6 +34,33 @@
     "Permission:Books.Delete": "Deleting the books",
     "Menu:Home": "Home",
     "LongWelcomeMessage": "Welcome to the application. This is a startup project based on the ABP framework. For more information visit",
-    "Welcome": "Welcome"
+    "Welcome": "Welcome",
+
+    // Common
+    "Menu:Common": "Common",
+    "Enum:IdentityType.0": "Undefined",
+    "Enum:IdentityType.1": "Asset",
+    "Enum:IdentityType.2": "Business",
+    "Enum:IdentityType.3": "CM",
+    "Enum:IdentityType.4": "Call",
+    "Enum:IdentityType.5": "Campaign",
+    "Enum:IdentityType.6": "EmailTemplate",
+    "Enum:IdentityType.7": "LeadAttachment",
+    "Enum:IdentityType.8": "LeadConversion",
+    "Enum:IdentityType.9": "Lead",
+    "Enum:IdentityType.10": "SalesTarget",
+    "Enum:IdentityType.11": "Employee",
+    "Enum:IdentityType.12": "Tracking",
+    "Enum:IdentityType.13": "EmailNotification",
+    "Enum:IdentityType.14": "TimesheetEmailNotification",
+    "Permission:Keywords": "Keywords",
+    "Permission:Keywords.Create": "Creating new Keywords",
+    "Permission:Keywords.Edit": "Editing the Keywords",
+    "Permission:Keywords.Delete": "Deleting the Keywords",
+    "KeywordDeletionConfirmationMessage": "Are you sure to delete the Keyword '{0}'?",
+    "NewKeyword": "New Keyword",
+    "Menu:Keywords": "Keywords",
+    "SearchWithThreeDot": "Search...",
+    "SelectIdentityType": "Select identityType"
   }
 }

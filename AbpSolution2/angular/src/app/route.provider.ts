@@ -22,6 +22,20 @@ function configureRoutes(routes: RoutesService) {
         layout: eLayoutType.application,
         requiredPolicy: 'AbpSolution2.Books',
       },
+      {
+        path: '/common',
+        name: '::Menu:Common',
+        iconClass: 'fas fa-folder',
+        layout: eLayoutType.application,
+      },
+      {
+        path: '/common/keyword',
+        parentName: '::Menu:Common', // Reference the parent menu by name
+        name: '::Menu:Keywords',
+        iconClass: 'fas fa-key',
+        requiredPolicy: 'CommonModule.Keywords',
+        layout: eLayoutType.application,
+      },
     ]);
   };
 }
