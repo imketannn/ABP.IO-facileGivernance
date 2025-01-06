@@ -8,6 +8,6 @@ namespace CommonModule.Common.Dto
         [MaxLength(250)]
         [Required]
         public virtual required string Name { get; set; }
-        public virtual TypeIdentity IdentyType { get; set; }
+        public virtual int IdentityType { get; set; }
     }
 }

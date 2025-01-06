@@ -34,7 +34,7 @@ public class KeywordAppService : CrudAppService<
     protected override async Task<IQueryable<Keyword>> CreateFilteredQueryAsync(PagedCommonResultRequestDto input)
     {
         var query = await _keywordRepository.GetQueryableAsync();
-        query = query.WhereIf(input.IdentyType != 0, x => ((int)x.IdentyType) == input.IdentyType)
+        query = query.WhereIf(input.IdentityType != 0, x => ((int)x.IdentityType) == input.IdentityType)
             .WhereIf(!string.IsNullOrEmpty(input.Keyword), x => x.Name.Contains(input.Keyword))
             .OrderBy(input.Sorting ?? "creationTime desc");
 
@@ -56,7 +56,7 @@ public class KeywordAppService : CrudAppService<
     {
         var query = await _keywordRepository.GetQueryableAsync();
         query = query
-            .WhereIf(input.IdentyType != 0, x => ((int)x.IdentyType) == input.IdentyType)
+            .WhereIf(input.IdentityType != 0, x => ((int)x.IdentityType) == input.IdentityType)
             .WhereIf(!string.IsNullOrEmpty(input.Keyword), x => x.Name.ToLower().Contains(input.Keyword.ToLower()))
             .OrderBy(input.Sorting ?? "creationTime desc");
 
@@ -71,7 +71,7 @@ public class KeywordAppService : CrudAppService<
     {
         var query = await _keywordRepository.GetQueryableAsync();
         var contentKeywords = query
-            .WhereIf(input.IdentyType != 0, x => ((int)x.IdentyType) == input.IdentyType)
+            .WhereIf(input.IdentityType != 0, x => ((int)x.IdentityType) == input.IdentityType)
             .WhereIf(!string.IsNullOrEmpty(input.Keyword), x => x.Name.Contains(input.Keyword))
             .Take(5)
             .OrderBy(x => x.Id)
@@ -84,7 +84,7 @@ public class KeywordAppService : CrudAppService<
     {
         var query = await _keywordRepository.GetQueryableAsync();
         var prospectKeywords = query
-           .WhereIf(input.IdentyType != 0, x => ((int)x.IdentyType) == input.IdentyType)
+           .WhereIf(input.IdentityType != 0, x => ((int)x.IdentityType) == input.IdentityType)
            .WhereIf(!string.IsNullOrEmpty(input.Keyword), x => x.Name.Contains(input.Keyword))
            .OrderBy(x => x.Id)
            .ToList();

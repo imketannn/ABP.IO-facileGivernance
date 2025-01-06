@@ -39,7 +39,7 @@ export class KeywordService {
     this.restService.request<any, PagedResultDto<KeywordDto>>({
       method: 'GET',
       url: '/api/app/keyword',
-      params: { keyword: input.keyword, id: input.id, identyType: input.identyType, sorting: input.sorting, skipCount: input.skipCount, maxResultCount: input.maxResultCount },
+      params: { keyword: input.keyword, id: input.id, identityType: input.identityType, sorting: input.sorting, skipCount: input.skipCount, maxResultCount: input.maxResultCount },
     },
     { apiName: this.apiName,...config });
   

@@ -7,6 +7,6 @@ namespace CommonModule.Common.Dto
         public virtual string Server { get; set; }
         public virtual string User { get; set; }
         public virtual string Password { get; set; }
-        public virtual TypeIdentity? IdentyType { get; set; }
+        public virtual int? IdentityType { get; set; }
     }
 }

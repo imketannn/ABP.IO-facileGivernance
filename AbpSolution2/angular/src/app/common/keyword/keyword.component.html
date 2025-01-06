@@ -38,8 +38,24 @@
 
        <!-- Filter Row -->
     <div class="row mb-3">
-      <!-- Search Bar -->
-      <div class="col-md-8">
+      <!-- Identity Type Dropdown -->
+      <div class="col-md-6">
+        <select
+          class="form-control"
+          [(ngModel)]="selectedIdentityType"
+          (ngModelChange)="onSearch()"
+        >
+          <option [value]="0">{{ '::SelectModule' | abpLocalization }}</option>
+          <option
+            *ngFor="let type of identityTypes"
+            [value]="type.value"
+          >
+            {{ '::Const:KeywordIdentity.' + type.value | abpLocalization }}
+          </option>
+        </select>
+      </div>
+       <!-- Search Bar -->
+       <div class="col-md-6">
         <input
           type="text"
           class="form-control"
@@ -47,22 +63,6 @@
           [(ngModel)]="searchText"
           (ngModelChange)="onSearch()"
         />
-      </div>
-      <!-- Identity Type Dropdown -->
-      <div class="col-md-4">
-        <select
-          class="form-control"
-          [(ngModel)]="selectedIdentityType"
-          (ngModelChange)="onSearch()"
-        >
-          <option [value]="null">{{ '::SelectIdentityType' | abpLocalization }}</option>
-          <option
-            *ngFor="let type of identityTypes"
-            [value]="type.value"
-          >
-            {{ '::Enum:IdentityType.' + type.value | abpLocalization }}
-          </option>
-        </select>
       </div>
     </div>
 
@@ -102,9 +102,9 @@
         </ng-template>
       </ngx-datatable-column>
       <ngx-datatable-column [name]="'::Name' | abpLocalization" prop="name"></ngx-datatable-column>
-      <ngx-datatable-column [name]="'::Type' | abpLocalization" prop="identyType">
+      <ngx-datatable-column [name]="'::ModuleType' | abpLocalization" prop="identityType">
         <ng-template let-row="row" ngx-datatable-cell-template>
-          {{ '::Enum:IdentityType.' + row.identyType | abpLocalization }}
+          {{ '::Const:KeywordIdentity.' + row.identityType | abpLocalization }}
         </ng-template>
       </ngx-datatable-column>
     </ngx-datatable>
@@ -120,7 +120,7 @@
   <ng-template #abpBody>
     <form [formGroup]="form" (ngSubmit)="save()">
       <div class="mt-2">
-        <label for="keyword-name">Name</label><span> * </span>
+        <label for="keyword-name">{{'::Name' | abpLocalization}}</label><span> * </span>
         <input
           type="text"
           id="keyword-name"
@@ -131,11 +131,11 @@
       </div>
 
       <div class="mt-2">
-        <label for="keyword-type">Type</label><span> * </span>
-        <select class="form-control" id="keyword-type" formControlName="identyType">
-          <option [ngValue]="null">{{ '::SelectIdentityType' | abpLocalization }}</option>
-          <option [ngValue]="identyType.value" *ngFor="let identyType of identityTypes">
-            {{ '::Enum:IdentityType.' + identyType.value | abpLocalization }}
+        <label for="keyword-type">{{'::ModuleType' | abpLocalization}}</label><span> * </span>
+        <select class="form-control" id="keyword-type" formControlName="identityType">
+          <option [ngValue]="null">{{ '::SelectModule' | abpLocalization }}</option>
+          <option [ngValue]="identityType.value" *ngFor="let identityType of identityTypes">
+            {{ '::Const:KeywordIdentity.' + identityType.value | abpLocalization }}
           </option>
         </select>
       </div>

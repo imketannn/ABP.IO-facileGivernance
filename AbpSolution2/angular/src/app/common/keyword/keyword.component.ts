@@ -5,7 +5,7 @@ import { NgbDateNativeAdapter, NgbDateAdapter } from '@ng-bootstrap/ng-bootstrap
 import { ConfirmationService, Confirmation } from '@abp/ng.theme.shared';
 import { KeywordService } from '@proxy/common';
 import { KeywordDto } from '@proxy/common-module/common/dto';
-import { typeIdentityOptions } from '@proxy/common-module/common';
+// import { typeIdentityOptions } from '@proxy/common-module/common';
 
 @Component({
   selector: 'app-keyword',
@@ -18,10 +18,15 @@ export class KeywordComponent implements OnInit {
 
   selectedKeyword = {} as KeywordDto; // declare selectedKeyword
   form: FormGroup;
-  identityTypes = typeIdentityOptions;
+  //  identityTypes = typeIdentityOptions;
+   identityTypes = [
+    { key: "Prospect", value: 1 },
+    { key: "Content", value: 2 },
+  ];
+
   isModalOpen = false;
   searchText: string = ''; // For search bar
-  selectedIdentityType: string | null = null; // For Identity Type dropdown
+  selectedIdentityType: number | null = 0; // For Identity Type dropdown
 
   constructor(
     public readonly list: ListService,
@@ -31,6 +36,9 @@ export class KeywordComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    debugger
+    this.identityTypes;
+    // this.moduleType;
     const keywordStreamCreator = query =>
       this.keywordService.getList({
         ...query,
@@ -45,7 +53,7 @@ export class KeywordComponent implements OnInit {
 
   onSearch(): void {
     debugger
-    this.selectedIdentityType
+    // this.selectedIdentityType = Number.parseInt(this.selectedIdentityType.toString());
     this.list.get();
   }
 
@@ -74,7 +82,7 @@ export class KeywordComponent implements OnInit {
   buildForm() {
     this.form = this.fb.group({
       name: [this.selectedKeyword.name || '', Validators.required],
-      identyType: [this.selectedKeyword.identyType || null, Validators.required],
+      identityType: [this.selectedKeyword.identityType || null, Validators.required],
     });
   }
 

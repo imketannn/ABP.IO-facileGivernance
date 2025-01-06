@@ -61,6 +61,10 @@
     "NewKeyword": "New Keyword",
     "Menu:Keywords": "Keywords",
     "SearchWithThreeDot": "Search...",
-    "SelectIdentityType": "Select identityType"
+    "SelectIdentityType": "Select identityType",
+    "ModuleType": "Module type",
+    "SelectModule": "Please Select Module",
+    "Const:KeywordIdentity.1": "Prospect",
+    "Const:KeywordIdentity.2": "Content"
   }
 }

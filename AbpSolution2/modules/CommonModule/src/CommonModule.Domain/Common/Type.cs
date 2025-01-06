@@ -9,7 +9,7 @@ namespace CommonModule.Common
         [Required]
         public virtual required string Name { get; set; }
         public virtual bool IsActive { get; set; }
-        public virtual TypeIdentity IdentyType { get; set; }
+        public virtual int IdentityType { get; set; }
         public virtual long? UserId { get; set; }
         //[ForeignKey("UserId")]
         //public virtual User UserFk { get; set; }

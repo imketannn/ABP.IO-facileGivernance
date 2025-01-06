@@ -1505,7 +1505,7 @@
                 },
                 {
                   "nameOnMethod": "input",
-                  "name": "IdentyType",
+                  "name": "IdentityType",
                   "jsonName": null,
                   "type": "System.Int32",
                   "typeSimple": "number",
@@ -4606,10 +4606,10 @@
           "regex": null
         },
         {
-          "name": "IdentyType",
+          "name": "IdentityType",
           "jsonName": null,
-          "type": "CommonModule.Common.TypeIdentity",
-          "typeSimple": "CommonModule.Common.TypeIdentity",
+          "type": "System.Int32",
+          "typeSimple": "number",
           "isRequired": false,
           "minLength": null,
           "maxLength": null,
@@ -4651,7 +4651,7 @@
           "regex": null
         },
         {
-          "name": "IdentyType",
+          "name": "IdentityType",
           "jsonName": null,
           "type": "System.Int32",
           "typeSimple": "number",
@@ -4663,44 +4663,6 @@
           "regex": null
         }
       ]
-    },
-    "CommonModule.Common.TypeIdentity": {
-      "baseType": "System.Enum",
-      "isEnum": true,
-      "enumNames": [
-        "Asset",
-        "Business",
-        "CM",
-        "Call",
-        "Campaign",
-        "EmailTemplate",
-        "LeadAttachment",
-        "LeadConversion",
-        "Lead",
-        "SalesTarget",
-        "Employee",
-        "Tracking",
-        "EmailNotification",
-        "TimesheetEmailNotification"
-      ],
-      "enumValues": [
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-        9,
-        10,
-        11,
-        12,
-        13,
-        14
-      ],
-      "genericArguments": null,
-      "properties": null
     },
     "CommonModule.Samples.SampleDto": {
       "baseType": null,

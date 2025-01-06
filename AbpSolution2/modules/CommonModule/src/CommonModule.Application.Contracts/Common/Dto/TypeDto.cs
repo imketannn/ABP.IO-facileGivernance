@@ -11,7 +11,7 @@ namespace CommonModule.Common.Dto
         public virtual bool IsActive { get; set; }
 
         [Required]
-        public virtual TypeIdentity IdentyType { get; set; }
+        public virtual int IdentityType { get; set; }
         public virtual long? UserId { get; set; }
     }
 }

@@ -6,6 +6,6 @@ namespace CommonModule.Common.Dto
     {
         public string? Keyword { get; set; }
         public int id { get; set; }
-        public virtual int IdentyType { get; set; }
+        public virtual int IdentityType { get; set; }
     }
 }

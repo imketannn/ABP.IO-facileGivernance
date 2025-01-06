@@ -4,6 +4,7 @@ using CommonModule.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Volo.Abp.EntityFrameworkCore;
 
@@ -12,9 +13,11 @@ using Volo.Abp.EntityFrameworkCore;
 namespace CommonModule.Migrations
 {
     [DbContext(typeof(CommonModuleDbContext))]
-    partial class CommonModuleDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250106053706_Change_spell_IdentyType-TO_IdentityType")]
+    partial class Change_spell_IdentyTypeTO_IdentityType
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
