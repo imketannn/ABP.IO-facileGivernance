@@ -17,14 +17,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { APP_ROUTE_PROVIDER } from './route.provider';
 
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    ThemeSharedModule,
     CoreModule,
+    ThemeSharedModule,
     ThemeLeptonXModule.forRoot(),
     SideMenuLayoutModule.forRoot(),
   ],
