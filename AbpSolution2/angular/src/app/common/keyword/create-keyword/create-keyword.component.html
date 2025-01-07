@@ -1,0 +1,49 @@
+<abp-modal [visible]="true" (disappear)="bsModalRef.hide()">
+  <ng-template #abpHeader>
+    <h3>
+      {{
+        identityType === Enum.Content
+          ? ('::CreateNewProspectKeyword' | abpLocalization)
+          : ('::CreateNewContentKeyword' | abpLocalization)
+      }}
+    </h3>
+  </ng-template>
+
+  <ng-template #abpBody>
+    <form [formGroup]="form" (ngSubmit)="save()">
+      <div class="mt-2">
+        <label for="keyword-type">{{ '::ModuleType' | abpLocalization }}</label
+        ><span> * </span>
+        <select class="form-control" id="keyword-type" formControlName="identityType">
+          <option [ngValue]="null">{{ '::SelectModule' | abpLocalization }}</option>
+          <option [ngValue]="identityType.value" *ngFor="let identityType of ModuleName">
+            {{ '::Const:KeywordIdentity.' + identityType.value | abpLocalization }}
+          </option>
+        </select>
+      </div>
+
+      <div class="mt-2">
+        <label for="keyword-name">{{ '::Name' | abpLocalization }}</label
+        ><span> * </span>
+        <input
+          type="text"
+          id="keyword-name"
+          class="form-control"
+          formControlName="name"
+          autofocus
+        />
+      </div>
+    </form>
+  </ng-template>
+
+  <ng-template #abpFooter>
+    <button type="button" class="btn btn-secondary" abpClose (click)="bsModalRef.hide()">
+      {{ '::Cancel' | abpLocalization }}
+    </button>
+
+    <button class="btn btn-primary" (click)="save()" [disabled]="form.invalid">
+      <i class="fa fa-check mr-1"></i>
+      {{ '::Save' | abpLocalization }}
+    </button>
+  </ng-template>
+</abp-modal>

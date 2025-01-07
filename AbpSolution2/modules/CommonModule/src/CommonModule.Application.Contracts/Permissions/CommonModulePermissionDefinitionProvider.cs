@@ -10,6 +10,8 @@ public class CommonModulePermissionDefinitionProvider : PermissionDefinitionProv
     {
         var myGroup = context.AddGroup(CommonModulePermissions.GroupName, L("Permission:CommonModule"));
 
+        var CommonMasterPermission = myGroup.AddPermission(CommonModulePermissions.Master.CommonMaster, L("Permission:Master"));
+
         var KeywordPermission = myGroup.AddPermission(CommonModulePermissions.Keyword.Default, L("Permission:Keyword"));
         KeywordPermission.AddChild(CommonModulePermissions.Keyword.Create, L("Permission:Keyword.Create"));
         KeywordPermission.AddChild(CommonModulePermissions.Keyword.View, L("Permission:Keyword.View"));

@@ -1,44 +1,44 @@
-import { ListService, PagedResultDto } from '@abp/ng.core';
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { NgbDateNativeAdapter, NgbDateAdapter } from '@ng-bootstrap/ng-bootstrap';
-import { ConfirmationService, Confirmation } from '@abp/ng.theme.shared';
+import { Location } from '@angular/common';
+import { Component, inject, OnInit } from '@angular/core';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { CreateKeywordComponent } from './create-keyword/create-keyword.component';
 import { KeywordService } from '@proxy/common';
+import { Confirmation, ConfirmationService } from '@abp/ng.theme.shared';
 import { KeywordDto } from '@proxy/common-module/common/dto';
-// import { typeIdentityOptions } from '@proxy/common-module/common';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ListService, PagedResultDto } from '@abp/ng.core';
+import { ViewKeywordComponent } from './view-keyword/view-keyword.component';
+import { EditKeywordComponent } from './edit-keyword/edit-keyword.component';
 
 @Component({
   selector: 'app-keyword',
   templateUrl: './keyword.component.html',
   styleUrl: './keyword.component.scss',
-  providers: [ListService, { provide: NgbDateAdapter, useClass: NgbDateNativeAdapter }],
+  providers: [ListService],
 })
 export class KeywordComponent implements OnInit {
+  modalService = inject(NgbModal);
   keyword = { items: [], totalCount: 0 } as PagedResultDto<KeywordDto>;
 
   selectedKeyword = {} as KeywordDto; // declare selectedKeyword
-  form: FormGroup;
-  //  identityTypes = typeIdentityOptions;
-   identityTypes = [
-    { key: "Prospect", value: 1 },
-    { key: "Content", value: 2 },
+  identityTypes = [
+    { key: 'Prospect', value: 1 },
+    { key: 'Content', value: 2 },
   ];
 
-  isModalOpen = false;
   searchText: string = ''; // For search bar
   selectedIdentityType: number | null = 0; // For Identity Type dropdown
+  identityType: number;
 
   constructor(
     public readonly list: ListService,
     private keywordService: KeywordService,
-    private fb: FormBuilder,
-    private confirmation: ConfirmationService // inject the ConfirmationService
+    private confirmation: ConfirmationService, // inject the ConfirmationService
+    private _modalService: BsModalService,
+    private location: Location
   ) {}
 
   ngOnInit() {
-    debugger
-    this.identityTypes;
-    // this.moduleType;
     const keywordStreamCreator = query =>
       this.keywordService.getList({
         ...query,
@@ -52,22 +52,50 @@ export class KeywordComponent implements OnInit {
   }
 
   onSearch(): void {
-    debugger
-    // this.selectedIdentityType = Number.parseInt(this.selectedIdentityType.toString());
     this.list.get();
   }
 
   createKeyword() {
     this.selectedKeyword = {} as KeywordDto; // reset the selected keyword
-    this.buildForm();
-    this.isModalOpen = true;
+    this.showCreateOrEditKeywordDialog(this.selectedKeyword);
   }
 
-  editkeyword(id: number) {
-    this.keywordService.get(id).subscribe(keyword => {
-      this.selectedKeyword = keyword;
-      this.buildForm();
-      this.isModalOpen = true;
+  editKeyword(keyword: KeywordDto): void {
+    this.showCreateOrEditKeywordDialog(keyword);
+  }
+  back(): void {
+    this.location.back();
+  }
+  viewKeyword(keyword: KeywordDto): void {
+    let viewKeywordDialog: BsModalRef;
+    viewKeywordDialog = this._modalService.show(ViewKeywordComponent, {
+      class: 'modal-md',
+      initialState: {
+        keyword: keyword,
+      },
+    });
+  }
+
+  showCreateOrEditKeywordDialog(keyword: KeywordDto): void {
+    let createOrEditKeywordDialog: BsModalRef;
+    if (!keyword.id) {
+      createOrEditKeywordDialog = this._modalService.show(CreateKeywordComponent, {
+        class: 'modal-md',
+        initialState: {
+          identityType: this.identityType,
+        },
+      });
+    } else {
+      createOrEditKeywordDialog = this._modalService.show(EditKeywordComponent, {
+        class: 'modal-md',
+        initialState: {
+          keyword: keyword,
+          identityType: this.identityType,
+        },
+      });
+    }
+    createOrEditKeywordDialog.content.onSave.subscribe(() => {
+      this.list.get();
     });
   }
 
@@ -76,30 +104,6 @@ export class KeywordComponent implements OnInit {
       if (status === Confirmation.Status.confirm) {
         this.keywordService.delete(id).subscribe(() => this.list.get());
       }
-    });
-  }
-
-  buildForm() {
-    this.form = this.fb.group({
-      name: [this.selectedKeyword.name || '', Validators.required],
-      identityType: [this.selectedKeyword.identityType || null, Validators.required],
-    });
-  }
-
-  // change the save method
-  save() {
-    if (this.form.invalid) {
-      return;
-    }
-
-    const request = this.selectedKeyword.id
-      ? this.keywordService.update(this.selectedKeyword.id, this.form.value)
-      : this.keywordService.create(this.form.value);
-
-    request.subscribe(() => {
-      this.isModalOpen = false;
-      this.form.reset();
-      this.list.get();
     });
   }
 }

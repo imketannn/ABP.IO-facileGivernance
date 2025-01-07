@@ -28,7 +28,14 @@ const routes: Routes = [
   },
   { path: 'books', loadChildren: () => import('./book/book.module').then(m => m.BookModule) },
 
-  { path: 'common', loadChildren: () => import('./common/commons.module').then(m => m.CommonsModule) },
+  {
+    path: 'commonmaster',
+    loadChildren: () => import('./common/commons.module').then(m => m.CommonsModule),
+  },
+  {
+    path: 'common',
+    loadChildren: () => import('./common/commons.module').then(m => m.CommonsModule),
+  },
 ];
 
 @NgModule({

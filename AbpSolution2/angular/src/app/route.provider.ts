@@ -26,14 +26,14 @@ function configureRoutes(routes: RoutesService) {
         path: '/common',
         name: '::Menu:Common',
         iconClass: 'fas fa-folder',
+        // requiredPolicy: 'CommonModule.Master',
         layout: eLayoutType.application,
       },
       {
-        path: '/common/keyword',
+        path: '/commonmaster',
         parentName: '::Menu:Common', // Reference the parent menu by name
-        name: '::Menu:Keywords',
-        iconClass: 'fas fa-key',
-        requiredPolicy: 'CommonModule.Keywords',
+        name: '::Menu:Master',
+        iconClass: 'fas fa-th-large',
         layout: eLayoutType.application,
       },
     ]);

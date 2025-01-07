@@ -59,12 +59,22 @@
     "Permission:Keywords.Delete": "Deleting the Keywords",
     "KeywordDeletionConfirmationMessage": "Are you sure to delete the Keyword '{0}'?",
     "NewKeyword": "New Keyword",
+    "ContentKeywords": "Content Keywords",
     "Menu:Keywords": "Keywords",
     "SearchWithThreeDot": "Search...",
     "SelectIdentityType": "Select identityType",
     "ModuleType": "Module type",
+    "ModuleName": "Module name",
     "SelectModule": "Please Select Module",
     "Const:KeywordIdentity.1": "Prospect",
-    "Const:KeywordIdentity.2": "Content"
+    "Const:KeywordIdentity.2": "Content",
+    "CreateNewProspectKeyword": "Create New Prospect Keyword",
+    "CreateNewContentKeyword": "Create New Content Keyword",
+    "ViewProspectKeyword": "View Prospect Keyword",
+    "ViewContentKeyword": "View Content Keyword",
+    "EditProspectKeyword": "Edit Prospect Keyword",
+    "EditContentKeyword": "Edit Content Keyword",
+    "Master": "Master",
+    "Menu:Master": "Master"
   }
 }

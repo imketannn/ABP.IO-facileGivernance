@@ -1,0 +1,38 @@
+<abp-modal [visible]="true" (disappear)="bsModalRef.hide()">
+  <ng-template #abpHeader>
+    <h3>
+      {{
+        identityType === Enum.Content
+          ? ('::ViewProspectKeyword' | abpLocalization)
+          : ('::ViewContentKeyword' | abpLocalization)
+      }}
+    </h3>
+  </ng-template>
+  <ng-template #abpBody>
+    <form class="form-horizontal" autocomplete="off" #ViewKeywordForm="ngForm">
+      <div class="modal-body">
+        <!-- <div class="form-group row"> -->
+        <div class="form-group row required">
+          <label class="col-md-4 col-form-label" for="identyType">
+            <strong> {{ '::ModuleName' | abpLocalization }}</strong>
+          </label>
+          <div class="col-md-4" style="margin-top: 8px">
+            <p>
+              {{ identityType }}
+            </p>
+          </div>
+        </div>
+        <div class="form-group row required">
+          <label class="col-md-4 col-form-label" for="name">
+            <strong> {{ '::Name' | abpLocalization }}   </strong>
+          </label>
+          <div class="col-md-4" style="margin-top: 8px">
+            <p>
+              {{ keyword.name }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </form>
+  </ng-template>
+</abp-modal>
